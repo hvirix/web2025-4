@@ -44,8 +44,10 @@ const requestListener = function (req, res) {
         let max_rate = Math.max(...array);
         const objToSave = {data: {max_rate: max_rate}};
         const newXML = builder.build(objToSave);
-        fs.writeFile("test.xml", newXML);
-
+        fs.writeFile("test.xml", newXML, err => {
+        });
+        res.writeHead(200);
+        res.end(newXML);
     });
 }
 
